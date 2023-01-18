@@ -1,0 +1,28 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: API_GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: course-service
+        uri:
+          lb://course-service
+        predicates:
+        - Path=/api/v1/course/** 
+      - id: student-service
+        uri:
+          lb://student-service
+        predicates:
+        - Path=/api/v1/student/**
+      - id: student-service
+        uri:
+          lb://users
+        predicates:
+        - Path=/api/v1/**
+      
+          
+     
+  
